@@ -72,18 +72,18 @@ var obsList = continentList.map(function(ct){
     return nobs
 })
 
-// cast list of images to multi-band images
-var obsImg = ee.ImageCollection(obsByCt).toBands().rename(BandName)
+    // cast list of images to multi-band images
+    var obsImg = ee.ImageCollection(obsByCt).toBands().rename(BandName)
 
-Export.image.toAsset({
-    image: obsImg,
-    description: 'NumOfObs_' + id + '_C2', 
-    assetId: outPath + 'C2_' + ct[1] + '_NumOfObs_900m',
-    // switch to 30 if needed
-    scale: 900,
-    maxPixels: 1e13,
-    region: grid.geometry()
-});
+    Export.image.toAsset({
+        image: obsImg,
+        description: 'NumOfObs_' + id + '_C2', 
+        assetId: outPath + 'C2_' + ct[1] + '_NumOfObs_900m',
+        // switch to 30 if needed
+        scale: 900,
+        maxPixels: 1e13,
+        region: grid.geometry()
+    });
 
 })
 
