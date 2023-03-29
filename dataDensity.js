@@ -62,15 +62,15 @@ var obsList = continentList.map(function(ct){
     * @param {String} year: client-side year list
     **/
     var obsByCt = Years.map(function(year){
-    var sYear = year[0];
-    var eYear = year[1];
-    
-    // yrStr is not used anymore, need to be removed
-    // the last param is indicating if include Tier 2 images or not
-    var nobs = ee.Image(uiUtils.getAnnualNumOfObs(sYear, eYear, sMonth, eMonth, grid.geometry(), true)).uint16()
+        var sYear = year[0];
+        var eYear = year[1];
 
-    return nobs
-})
+        // yrStr is not used anymore, need to be removed
+        // the last param is indicating if include Tier 2 images or not
+        var nobs = ee.Image(uiUtils.getAnnualNumOfObs(sYear, eYear, sMonth, eMonth, grid.geometry(), true)).uint16()
+
+        return nobs
+    })
 
     // cast list of images to multi-band images
     var obsImg = ee.ImageCollection(obsByCt).toBands().rename(BandName)
